@@ -1,0 +1,57 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "targets": {
+            "browsers": "defaults"
+          },
+          "useBuiltIns": false
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"]
+      }
+    ],
+    ["lodash"]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "inline-dotenv",
+        [
+          "styled-components",
+          {
+            "displayName": true,
+            "ssr": true
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "inline-dotenv",
+        "transform-inline-environment-variables",
+        [
+          "styled-components",
+          {
+            "displayName": false,
+            "ssr": true
+          }
+        ]
+      ]
+    }
+  }
+}
